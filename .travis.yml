@@ -1,0 +1,23 @@
+sudo: required
+os: linux
+language: minimal
+addons:
+  apt:
+    packages:
+    - docker-ce
+
+services:
+  - docker
+
+script:
+  - echo "Daily push to Docker Hub"
+  - docker build --no-cache -t llgameserverbot/push-daily .
+  - exit 0
+
+before_deploy:
+  - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS";
+deploy:
+  provider: script
+  script: docker push llgameserverbot/push-daily
+  on:
+    branch: master
