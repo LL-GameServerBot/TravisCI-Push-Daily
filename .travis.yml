@@ -12,7 +12,7 @@ services:
 script:
   - echo "Daily push to Docker Hub"
   - docker build --no-cache -t llgameserverbot/push-daily .
-  - exit 0
+  - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS";
 
 before_deploy:
   - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS";
