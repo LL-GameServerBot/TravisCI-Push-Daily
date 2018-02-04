@@ -13,11 +13,4 @@ script:
   - echo "Daily push to Docker Hub"
   - docker build --no-cache -t llgameserverbot/push-daily .
   - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS";
-
-before_deploy:
-  - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS";
-deploy:
-  provider: script
-  script: docker push llgameserverbot/push-daily
-  on:
-    branch: master
+  - docker push llgameserverbot/push-daily;
