@@ -10,7 +10,7 @@ services:
   - docker
 
 script:
-  - echo "Daily push to Docker HUB"
+  - echo "Daily push to Docker Hub"
   - docker build --no-cache -t llgameserverbot/push-daily .
   - exit 0
 
